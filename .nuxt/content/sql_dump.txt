@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS _content_info (id TEXT PRIMARY KEY, "ready" BOOLEAN, "structureVersion" VARCHAR, "version" VARCHAR, "__hash__" TEXT UNIQUE); -- structure
+INSERT INTO _content_info VALUES ('checksum_content', false, 'bgIYhpjRuV8zbHJE_CfelwKpJ_Td6YuGJwixiek8lmI', 'v3.5.0--QG9516f3_CN30kEJZfVhcLE2o3tj-z1FQaW6FSuBPTQ', 'I0zkUJa-lBtQ-FG0BENxWZ3kBne_w_EuKpGh3K8LW6U'); -- meta
+DROP TABLE IF EXISTS _content_content; -- structure
+CREATE TABLE IF NOT EXISTS _content_content (id TEXT PRIMARY KEY, "title" VARCHAR, "body" TEXT, "description" VARCHAR, "extension" VARCHAR, "meta" TEXT, "navigation" TEXT DEFAULT true, "path" VARCHAR, "seo" TEXT DEFAULT '{}', "stem" VARCHAR, "__hash__" TEXT UNIQUE); -- structure
+INSERT INTO _content_content VALUES ('content/posts/welcome.md', '欢迎来到我的博客', '{"type":"minimark","value":[["p",{},"这是我的第一篇文章。以后会在这里分享正在学习的技术、创作练习和生活片段。"]],"toc":{"title":"","searchDepth":2,"depth":2,"links":[]}}', '从这里开始记录学习、创作与日常观察。', 'md', '{"date":"2026-09-08"}', 'true', '/posts/welcome', '{"title":"欢迎来到我的博客","description":"从这里开始记录学习、创作与日常观察。"}', 'posts/welcome', '8w2fIM2sVfmptwhjQE3L9utxL41J6tVGdYGZNuLmpiY'); -- 8w2fIM2sVfmptwhjQE3L9utxL41J6tVGdYGZNuLmpiY
+UPDATE _content_info SET ready = true WHERE id = 'checksum_content'; -- meta

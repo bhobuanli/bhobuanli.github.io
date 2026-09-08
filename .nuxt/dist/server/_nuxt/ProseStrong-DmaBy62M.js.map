@@ -1,0 +1,1 @@
+{"version":3,"file":"ProseStrong-DmaBy62M.js","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseStrong.vue"],"sourcesContent":["<template>\n  <strong>\n    <slot />\n  </strong>\n</template>\n"],"x_google_ignoreList":[0],"mappings":""}

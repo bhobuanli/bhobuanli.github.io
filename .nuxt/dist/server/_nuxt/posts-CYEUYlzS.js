@@ -1,0 +1,48 @@
+import { n as NuxtLink } from "../server.mjs";
+import { n as useAsyncData, t as queryCollection } from "./client-CtHyGUlj.js";
+import { createVNode, defineComponent, toDisplayString, unref, useSSRContext, withAsyncContext, withCtx } from "vue";
+import { ssrInterpolate, ssrRenderComponent, ssrRenderList } from "vue/server-renderer";
+//#region app/pages/posts/index.vue?vue&type=script&setup=true&lang.ts
+var index_vue_vue_type_script_setup_true_lang_default = /*@__PURE__*/ defineComponent({
+	__name: "index",
+	__ssrInlineRender: true,
+	async setup(__props) {
+		let __temp, __restore;
+		const { data: posts } = ([__temp, __restore] = withAsyncContext(() => useAsyncData("posts", () => queryCollection("content").where("path", "LIKE", "/posts/%").order("date", "DESC").all())), __temp = await __temp, __restore(), __temp);
+		return (_ctx, _push, _parent, _attrs) => {
+			const _component_NuxtLink = NuxtLink;
+			_push(`<!--[--><section class="page-intro"><p class="eyebrow">WRITING</p><h1>文章</h1><p class="lead">记录正在学习的事，也记录还没有答案的问题。</p></section><div class="post-list"><!--[-->`);
+			ssrRenderList(unref(posts), (post) => {
+				_push(ssrRenderComponent(_component_NuxtLink, {
+					key: post.path,
+					to: post.path,
+					class: "post-card"
+				}, {
+					default: withCtx((_, _push, _parent, _scopeId) => {
+						if (_push) _push(`<span${_scopeId}>${ssrInterpolate(post.date)}</span><h2${_scopeId}>${ssrInterpolate(post.title)}</h2><p${_scopeId}>${ssrInterpolate(post.description)}</p>`);
+						else return [
+							createVNode("span", null, toDisplayString(post.date), 1),
+							createVNode("h2", null, toDisplayString(post.title), 1),
+							createVNode("p", null, toDisplayString(post.description), 1)
+						];
+					}),
+					_: 2
+				}, _parent));
+			});
+			_push(`<!--]--></div><!--]-->`);
+		};
+	}
+});
+//#endregion
+//#region app/pages/posts/index.vue
+var _sfc_setup = index_vue_vue_type_script_setup_true_lang_default.setup;
+index_vue_vue_type_script_setup_true_lang_default.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/posts/index.vue");
+	return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+var posts_default = index_vue_vue_type_script_setup_true_lang_default;
+//#endregion
+export { posts_default as default };
+
+//# sourceMappingURL=posts-CYEUYlzS.js.map

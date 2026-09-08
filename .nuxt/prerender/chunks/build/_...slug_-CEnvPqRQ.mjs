@@ -1,0 +1,879 @@
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { u as useRoute$1, c as createError$1, a as useRuntimeConfig } from '../virtual/entry.mjs';
+import { u as useAsyncData, q as queryCollection } from './client-CtHyGUlj.mjs';
+import { defineComponent, withAsyncContext, unref, mergeProps, computed, toRaw, resolveComponent, defineAsyncComponent, h, getCurrentInstance, reactive, watch, Text, Comment, useSSRContext } from 'file://D:/development/my-blog/node_modules/vue/index.mjs';
+import { ssrRenderComponent, ssrRenderSlot } from 'file://D:/development/my-blog/node_modules/vue/server-renderer/index.mjs';
+import { pascalCase, kebabCase } from 'file://D:/development/my-blog/node_modules/scule/dist/index.mjs';
+import destr from 'file://D:/development/my-blog/node_modules/destr/dist/index.mjs';
+import { find, html } from 'file://D:/development/my-blog/node_modules/property-information/index.js';
+import { toHast } from 'file://D:/development/my-blog/node_modules/minimark/dist/hast.mjs';
+import 'file://D:/development/my-blog/node_modules/nostics/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/nostics/dist/formatters/ansi.mjs';
+import 'file://D:/development/my-blog/node_modules/nuxt/node_modules/hookable/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/unctx/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/h3/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/ufo/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/ofetch/dist/node.mjs';
+import '../_/nitro.mjs';
+import 'file://D:/development/my-blog/node_modules/hookable/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/node-mock-http/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/klona/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/defu/dist/defu.mjs';
+import 'file://D:/development/my-blog/node_modules/radix3/dist/index.mjs';
+import 'node:fs';
+import 'node:url';
+import 'file://D:/development/my-blog/node_modules/pathe/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/unstorage/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/unstorage/drivers/fs.mjs';
+import 'file:///D:/development/my-blog/node_modules/@nuxt/nitro-server/dist/runtime/utils/cache-driver.mjs';
+import 'file://D:/development/my-blog/node_modules/unstorage/drivers/fs-lite.mjs';
+import 'file://D:/development/my-blog/node_modules/db0/dist/connectors/better-sqlite3.mjs';
+import 'file://D:/development/my-blog/node_modules/ohash/dist/index.mjs';
+import 'file://D:/development/my-blog/node_modules/vue-router/vue-router.node.mjs';
+import 'file://D:/development/my-blog/node_modules/unhead/dist/utils.mjs';
+import '../_/renderer.mjs';
+import 'node:async_hooks';
+import 'file://D:/development/my-blog/node_modules/unhead/dist/server.mjs';
+import 'file://D:/development/my-blog/node_modules/unhead/dist/legacy.mjs';
+import 'file://D:/development/my-blog/node_modules/unhead/dist/plugins.mjs';
+import 'file://D:/development/my-blog/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import 'file://D:/development/my-blog/node_modules/devalue/index.js';
+
+var html_tags_list_default = /* @__PURE__ */ new Set([
+  "a",
+  "abbr",
+  "address",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "bdi",
+  "bdo",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "data",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "footer",
+  "form",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "head",
+  "header",
+  "hgroup",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "math",
+  "menu",
+  "menuitem",
+  "meta",
+  "meter",
+  "nav",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "picture",
+  "pre",
+  "progress",
+  "q",
+  "rb",
+  "rp",
+  "rt",
+  "rtc",
+  "ruby",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "slot",
+  "small",
+  "source",
+  "span",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "svg",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "track",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr"
+]);
+var TEXT_TAGS = [
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "li"
+];
+function isTag(vnode, tag) {
+  if (vnode.type === tag) return true;
+  if (typeof vnode.type === "object" && vnode.type.tag === tag) return true;
+  if (vnode.tag === tag) return true;
+  return false;
+}
+function isText(vnode) {
+  return isTag(vnode, "text") || isTag(vnode, /* @__PURE__ */ Symbol.for("v-txt"));
+}
+function nodeChildren(node) {
+  var _a;
+  if (Array.isArray(node.children) || typeof node.children === "string") return node.children;
+  if (typeof ((_a = node.children) == null ? void 0 : _a.default) === "function") return node.children.default();
+  return [];
+}
+function nodeTextContent(node) {
+  if (!node) return "";
+  if (Array.isArray(node)) return node.map(nodeTextContent).join("");
+  if (isText(node)) return node.value || node.children || "";
+  const children = nodeChildren(node);
+  if (Array.isArray(children)) return children.map(nodeTextContent).filter(Boolean).join("");
+  return "";
+}
+function unwrap(vnode, tags = []) {
+  if (Array.isArray(vnode)) return vnode.flatMap((node) => unwrap(node, tags));
+  let result = vnode;
+  if (tags.some((tag) => tag === "*" || isTag(vnode, tag))) {
+    result = nodeChildren(vnode) || vnode;
+    if (!Array.isArray(result) && TEXT_TAGS.some((tag) => isTag(vnode, tag))) result = [result];
+  }
+  return result;
+}
+function _flatUnwrap(vnodes, tags = []) {
+  vnodes = Array.isArray(vnodes) ? vnodes : [vnodes];
+  if (!tags.length) return vnodes;
+  return vnodes.flatMap((vnode) => _flatUnwrap(unwrap(vnode, [tags[0]]), tags.slice(1))).filter((vnode) => !(isText(vnode) && nodeTextContent(vnode).trim() === ""));
+}
+function flatUnwrap(vnodes, tags = []) {
+  if (typeof tags === "string") tags = tags.split(/[,\s]/).map((tag) => tag.trim()).filter(Boolean);
+  if (!tags.length) return vnodes;
+  return _flatUnwrap(vnodes, tags).reduce((acc, item) => {
+    if (isText(item)) {
+      if (typeof acc[acc.length - 1] === "string") acc[acc.length - 1] += item.children;
+      else acc.push(item.children);
+    } else acc.push(item);
+    return acc;
+  }, []);
+}
+function pick(obj, keys) {
+  return keys.reduce((acc, key) => {
+    const value = get(obj, key);
+    if (value !== void 0) acc[key] = value;
+    return acc;
+  }, {});
+}
+function get(obj, key) {
+  return key.split(".").reduce((acc, k) => acc && acc[k], obj);
+}
+var DEFAULT_SLOT = "default";
+var rxOn = /^@|^v-on:/;
+var rxBind = /^:|^v-bind:/;
+var rxModel = /^v-model/;
+var nativeInputs = [
+  "select",
+  "textarea",
+  "input"
+];
+var specialParentTags = /* @__PURE__ */ new Set(["math", "svg"]);
+var customElements = /* @__PURE__ */ new Set();
+var proseComponentMap = Object.fromEntries([
+  "p",
+  "a",
+  "blockquote",
+  "code",
+  "pre",
+  "code",
+  "em",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "img",
+  "ul",
+  "ol",
+  "li",
+  "strong",
+  "table",
+  "thead",
+  "tbody",
+  "td",
+  "th",
+  "tr",
+  "script"
+].map((t) => [t, `prose-${t}`]));
+var dangerousTags = ["script", "base"];
+var _sfc_main$1 = defineComponent({
+  name: "MDCRenderer",
+  props: {
+    /**
+    * Content to render
+    */
+    body: {
+      type: Object,
+      required: true
+    },
+    /**
+    * Document meta data
+    */
+    data: {
+      type: Object,
+      default: () => ({})
+    },
+    /**
+    * Class(es) to bind to the component
+    */
+    class: {
+      type: [String, Object],
+      default: void 0
+    },
+    /**
+    * Root tag to use for rendering
+    */
+    tag: {
+      type: [String, Boolean],
+      default: void 0
+    },
+    /**
+    * Whether or not to render Prose components instead of HTML tags
+    */
+    prose: {
+      type: Boolean,
+      default: void 0
+    },
+    /**
+    * The map of custom components to use for rendering.
+    */
+    components: {
+      type: Object,
+      default: () => ({})
+    },
+    /**
+    * Tags to unwrap separated by spaces
+    * Example: 'ul li'
+    */
+    unwrap: {
+      type: [Boolean, String],
+      default: false
+    }
+  },
+  async setup(props) {
+    var _a, _b, _c, _d, _e, _f;
+    const $nuxt = (_c = (_b = (_a = getCurrentInstance()) == null ? void 0 : _a.appContext) == null ? void 0 : _b.app) == null ? void 0 : _c.$nuxt;
+    const route = ($nuxt == null ? void 0 : $nuxt.$route) || ($nuxt == null ? void 0 : $nuxt._route);
+    const { mdc } = ((_d = $nuxt == null ? void 0 : $nuxt.$config) == null ? void 0 : _d.public) || {};
+    const customElementTags = ((_e = mdc == null ? void 0 : mdc.components) == null ? void 0 : _e.customElements) || ((_f = mdc == null ? void 0 : mdc.components) == null ? void 0 : _f.custom);
+    if (customElementTags) customElementTags.forEach((tag) => customElements.add(tag));
+    const tags = computed(() => {
+      var _a2, _b2, _c2, _d2;
+      return {
+        ...((_a2 = mdc == null ? void 0 : mdc.components) == null ? void 0 : _a2.prose) && props.prose !== false ? proseComponentMap : {},
+        ...((_b2 = mdc == null ? void 0 : mdc.components) == null ? void 0 : _b2.map) || {},
+        ...toRaw(((_d2 = (_c2 = props.data) == null ? void 0 : _c2.mdc) == null ? void 0 : _d2.components) || {}),
+        ...props.components
+      };
+    });
+    const contentKey = computed(() => {
+      var _a2;
+      const components = (((_a2 = props.body) == null ? void 0 : _a2.children) || []).map((n) => n.tag || n.type).filter((t) => !ignoreTag(t));
+      return Array.from(new Set(components)).sort().join(".");
+    });
+    const runtimeData = reactive({ ...props.data });
+    watch(() => props.data, (newData) => {
+      Object.assign(runtimeData, newData);
+    });
+    await resolveContentComponents(props.body, { tags: tags.value });
+    function updateRuntimeData(code, value) {
+      const lastIndex = code.split(".").length - 1;
+      return code.split(".").reduce((o, k, i) => {
+        if (i == lastIndex && o) {
+          o[k] = value;
+          return o[k];
+        }
+        return typeof o === "object" ? o[k] : void 0;
+      }, runtimeData);
+    }
+    return {
+      tags,
+      contentKey,
+      route,
+      runtimeData,
+      updateRuntimeData
+    };
+  },
+  render(ctx) {
+    var _a, _b;
+    const { tags, tag, body, data, contentKey, route, unwrap: unwrap2, runtimeData, updateRuntimeData } = ctx;
+    if (!body) return null;
+    const meta = {
+      ...data,
+      tags,
+      $route: route,
+      runtimeData,
+      updateRuntimeData
+    };
+    const component = tag !== false ? resolveComponentInstance(tag || ((_a = meta.component) == null ? void 0 : _a.name) || meta.component || "div") : void 0;
+    return component ? h(component, {
+      ...(_b = meta.component) == null ? void 0 : _b.props,
+      class: ctx.class,
+      ...this.$attrs,
+      key: contentKey
+    }, { default: defaultSlotRenderer }) : defaultSlotRenderer == null ? void 0 : defaultSlotRenderer();
+    function defaultSlotRenderer() {
+      const defaultSlot = _renderSlots(body, h, {
+        documentMeta: meta,
+        parentScope: meta,
+        resolveComponent: resolveComponentInstance
+      });
+      if (!(defaultSlot == null ? void 0 : defaultSlot.default)) return null;
+      if (unwrap2) return flatUnwrap(defaultSlot.default(), typeof unwrap2 === "string" ? unwrap2.split(" ") : ["*"]);
+      return defaultSlot.default();
+    }
+  }
+});
+function _renderNode(node, h2, options, keyInParent) {
+  const { documentMeta, parentScope, resolveComponent: resolveComponent2 } = options;
+  if (node.type === "text") return h2(Text, node.value);
+  if (node.type === "comment") return h2(Comment, null, node.value);
+  const originalTag = node.tag;
+  const renderTag = findMappedTag(node, documentMeta.tags);
+  if (node.tag === "binding") return renderBinding(node, h2, documentMeta, parentScope);
+  const _resolveComponent = isUnresolvableTag(renderTag) ? (component2) => component2 : resolveComponent2;
+  if (dangerousTags.includes(pascalCase(renderTag).toLowerCase())) return h2("pre", { class: "mdc-renderer-dangerous-tag" }, "<" + renderTag + ">" + nodeTextContent(node) + "</" + renderTag + ">");
+  const component = _resolveComponent(renderTag);
+  if (typeof component === "object") component.tag = originalTag;
+  const props = propsToData(node, documentMeta);
+  if (keyInParent) props.key = keyInParent;
+  return h2(component, props, _renderSlots(node, h2, {
+    documentMeta,
+    parentScope: {
+      ...parentScope,
+      ...props
+    },
+    resolveComponent: _resolveComponent
+  }));
+}
+function _renderSlots(node, h2, options) {
+  const { documentMeta, parentScope, resolveComponent: resolveComponent2 } = options;
+  const slotNodes = (node.children || []).reduce((data, node2) => {
+    if (!isTemplate(node2)) {
+      data[DEFAULT_SLOT].children.push(node2);
+      return data;
+    }
+    const slotName = getSlotName(node2);
+    data[slotName] = data[slotName] || {
+      props: {},
+      children: []
+    };
+    if (node2.type === "element") {
+      data[slotName].props = node2.props;
+      data[slotName].children.push(...node2.children || []);
+    }
+    return data;
+  }, { [DEFAULT_SLOT]: {
+    props: {},
+    children: []
+  } });
+  return Object.entries(slotNodes).reduce((slots2, [name, { props, children: children2 }]) => {
+    if (!children2.length) return slots2;
+    slots2[name] = (data = {}) => {
+      const scopedProps = pick(data, Object.keys(props || {}));
+      let vNodes = children2.map((child, index) => {
+        var _a;
+        return _renderNode(child, h2, {
+          documentMeta,
+          parentScope: {
+            ...parentScope,
+            ...scopedProps
+          },
+          resolveComponent: resolveComponent2
+        }, String(((_a = child.props) == null ? void 0 : _a.key) || index));
+      });
+      if (props == null ? void 0 : props.unwrap) vNodes = flatUnwrap(vNodes, props.unwrap);
+      return mergeTextNodes(vNodes);
+    };
+    return slots2;
+  }, {});
+}
+function renderBinding(node, h2, documentMeta, parentScope = {}) {
+  var _a, _b, _c;
+  const data = {
+    ...documentMeta.runtimeData,
+    ...parentScope,
+    $document: documentMeta,
+    $doc: documentMeta
+  };
+  const value = ((_a = node.props) == null ? void 0 : _a.value.trim().split(/\.|\[(\d+)\]/).filter(Boolean)).reduce((data2, key) => {
+    if (data2 && key in data2) {
+      if (typeof data2[key] === "function") return data2[key]();
+      else return data2[key];
+    }
+  }, data);
+  const defaultValue = (_b = node.props) == null ? void 0 : _b.defaultValue;
+  return h2(Text, (_c = value != null ? value : defaultValue) != null ? _c : "");
+}
+function propsToData(node, documentMeta) {
+  const { tag = "", props = {} } = node;
+  return Object.keys(props).reduce(function(data, key) {
+    if (key === "__ignoreMap") return data;
+    const value = props[key];
+    if (rxModel.test(key)) return propsToDataRxModel(key, value, data, documentMeta, { native: nativeInputs.includes(tag) });
+    if (key === "v-bind") return propsToDataVBind(key, value, data, documentMeta);
+    if (rxOn.test(key)) return propsToDataRxOn(key, value, data, documentMeta);
+    if (rxBind.test(key)) return propsToDataRxBind(key, value, data, documentMeta);
+    const { attribute } = find(html, key);
+    if (Array.isArray(value) && value.every((v) => typeof v === "string")) {
+      data[attribute] = value.join(" ");
+      return data;
+    }
+    data[attribute] = value;
+    return data;
+  }, {});
+}
+function propsToDataRxModel(key, value, data, documentMeta, { native }) {
+  var _a;
+  const propName = ((_a = key.match(/^v-model:([^=]+)/)) == null ? void 0 : _a[1]) || "modelValue";
+  const field = native ? "value" : propName;
+  const event = native ? "onInput" : `onUpdate:${propName}`;
+  data[field] = evalInContext(value, documentMeta.runtimeData);
+  data[event] = (e) => {
+    var _a2;
+    documentMeta.updateRuntimeData(value, native ? (_a2 = e.target) == null ? void 0 : _a2.value : e);
+  };
+  return data;
+}
+function propsToDataVBind(_key, value, data, documentMeta) {
+  const val = evalInContext(value, documentMeta);
+  data = Object.assign(data, val);
+  return data;
+}
+function propsToDataRxOn(key, value, data, documentMeta) {
+  key = key.replace(rxOn, "");
+  data.on = data.on || {};
+  data.on[key] = () => evalInContext(value, documentMeta);
+  return data;
+}
+function propsToDataRxBind(key, value, data, documentMeta) {
+  key = key.replace(rxBind, "");
+  data[key] = evalInContext(value, documentMeta);
+  return data;
+}
+var resolveComponentInstance = (component) => {
+  if (typeof component === "string") {
+    if (ignoreTag(component)) return component;
+    const _component = resolveComponent(pascalCase(component), false);
+    if (!component || (_component == null ? void 0 : _component.name) === "AsyncComponentWrapper") return _component;
+    if (typeof _component === "string") return _component;
+    if ("setup" in _component) return defineAsyncComponent(() => new Promise((resolve) => resolve(_component)));
+    return _component;
+  }
+  return component;
+};
+function evalInContext(code, context) {
+  const result = code.split(".").reduce((o, k) => typeof o === "object" ? o[k] : void 0, context);
+  return typeof result === "undefined" ? destr(code) : result;
+}
+function getSlotName(node) {
+  let name = "";
+  for (const propName of Object.keys(node.props || {})) {
+    if (!propName.startsWith("#") && !propName.startsWith("v-slot:")) continue;
+    name = propName.split(/[:#]/, 2)[1];
+    break;
+  }
+  return name || DEFAULT_SLOT;
+}
+function isTemplate(node) {
+  return node.tag === "template";
+}
+function isUnresolvableTag(tag) {
+  return specialParentTags.has(tag);
+}
+function mergeTextNodes(nodes) {
+  const mergedNodes = [];
+  for (const node of nodes) {
+    const previousNode = mergedNodes[mergedNodes.length - 1];
+    if (node.type === Text && (previousNode == null ? void 0 : previousNode.type) === Text) previousNode.children = previousNode.children + node.children;
+    else mergedNodes.push(node);
+  }
+  return mergedNodes;
+}
+async function resolveContentComponents(body, meta) {
+  if (!body) return;
+  const components = Array.from(new Set(loadComponents(body, meta)));
+  await Promise.all(components.map(async (c) => {
+    if ((c == null ? void 0 : c.render) || (c == null ? void 0 : c.ssrRender) || (c == null ? void 0 : c.__ssrInlineRender)) return;
+    const resolvedComponent = resolveComponentInstance(c);
+    if ((resolvedComponent == null ? void 0 : resolvedComponent.__asyncLoader) && !resolvedComponent.__asyncResolved) await resolvedComponent.__asyncLoader();
+  }));
+  function loadComponents(node, documentMeta) {
+    const tag = node.tag;
+    if (node.type === "text" || tag === "binding" || node.type === "comment") return [];
+    const renderTag = findMappedTag(node, documentMeta.tags);
+    if (isUnresolvableTag(renderTag)) return [];
+    const components2 = [];
+    if (node.type !== "root" && !ignoreTag(renderTag)) components2.push(renderTag);
+    for (const child of node.children || []) components2.push(...loadComponents(child, documentMeta));
+    return components2;
+  }
+}
+function findMappedTag(node, tags) {
+  var _a;
+  const tag = node.tag;
+  if (!tag || typeof ((_a = node.props) == null ? void 0 : _a.__ignoreMap) !== "undefined") return tag;
+  return tags[tag] || tags[pascalCase(tag)] || tags[kebabCase(node.tag)] || tag;
+}
+function ignoreTag(tag) {
+  return (typeof tag === "string" ? customElements.has(tag) : false) || html_tags_list_default.has(tag);
+}
+var _sfc_setup$2 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/@nuxtjs/mdc/dist/runtime/components/MDCRenderer.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+var MDCRenderer_default = Object.assign(_sfc_main$1, { __name: "MDCRenderer" });
+var pickExport = (mod, exportName, componentName, path) => {
+  const resolved = exportName === "default" ? mod == null ? void 0 : mod.default : mod == null ? void 0 : mod[exportName];
+  if (!resolved) throw new Error(`[nuxt-content] Missing export "${exportName}" for component "${componentName}" in "${path}".`);
+  return resolved;
+};
+var localComponentLoaders = {
+  Alert: () => import('./Alert-DaG6bgAK.mjs').then((m) => pickExport(m, "default", "Alert", "./../../app/components/Alert.vue")),
+  Counter: () => import('./Counter-wfsT495B.mjs').then((m) => pickExport(m, "default", "Counter", "./../../app/components/Counter.vue"))
+};
+var globalComponents = [
+  "ProseA",
+  "ProseBlockquote",
+  "ProseCode",
+  "ProseEm",
+  "ProseH1",
+  "ProseH2",
+  "ProseH3",
+  "ProseH4",
+  "ProseH5",
+  "ProseH6",
+  "ProseHr",
+  "ProseImg",
+  "ProseLi",
+  "ProseOl",
+  "ProseP",
+  "ProsePre",
+  "ProseScript",
+  "ProseStrong",
+  "ProseTable",
+  "ProseTbody",
+  "ProseTd",
+  "ProseTh",
+  "ProseThead",
+  "ProseTr",
+  "ProseUl"
+];
+var localComponents = ["Alert", "Counter"];
+var _sfc_main = {
+  __name: "ContentRenderer",
+  __ssrInlineRender: true,
+  props: {
+    /**
+    * Content to render
+    */
+    value: {
+      type: Object,
+      required: true
+    },
+    /**
+    * Render only the excerpt
+    */
+    excerpt: {
+      type: Boolean,
+      default: false
+    },
+    /**
+    * Root tag to use for rendering
+    */
+    tag: {
+      type: String,
+      default: "div"
+    },
+    /**
+    * The map of custom components to use for rendering.
+    */
+    components: {
+      type: Object,
+      default: () => ({})
+    },
+    data: {
+      type: Object,
+      default: () => ({})
+    },
+    /**
+    * Whether or not to render Prose components instead of HTML tags
+    */
+    prose: {
+      type: Boolean,
+      default: void 0
+    },
+    /**
+    * Root tag to use for rendering
+    */
+    class: {
+      type: [String, Object],
+      default: void 0
+    },
+    /**
+    * Tags to unwrap separated by spaces
+    * Example: 'ul li'
+    */
+    unwrap: {
+      type: [Boolean, String],
+      default: false
+    }
+  },
+  setup(__props) {
+    const renderFunctions = [
+      "render",
+      "ssrRender",
+      "__ssrInlineRender"
+    ];
+    const props = __props;
+    const debug = globalThis._importMeta_.preview;
+    const body = computed(() => {
+      let body2 = props.value.body || props.value;
+      if (props.excerpt && props.value.excerpt) body2 = props.value.excerpt;
+      if (body2.type === "minimal" || body2.type === "minimark") return toHast({
+        type: "minimark",
+        value: body2.value
+      });
+      return body2;
+    });
+    const isEmpty = computed(() => {
+      var _a, _b;
+      return !((_b = (_a = body.value) == null ? void 0 : _a.children) == null ? void 0 : _b.length);
+    });
+    const data = computed(() => {
+      const { body: body2, excerpt, ...data2 } = props.value;
+      return {
+        ...data2,
+        ...props.data
+      };
+    });
+    const proseComponentMap2 = Object.fromEntries([
+      "p",
+      "a",
+      "blockquote",
+      "code",
+      "pre",
+      "code",
+      "em",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "hr",
+      "img",
+      "ul",
+      "ol",
+      "li",
+      "strong",
+      "table",
+      "thead",
+      "tbody",
+      "td",
+      "th",
+      "tr",
+      "script"
+    ].map((t) => [t, `prose-${t}`]));
+    const { mdc } = useRuntimeConfig().public || {};
+    const propsDataMDC = computed(() => props.data.mdc);
+    const tags = computed(() => {
+      var _a, _b, _c;
+      return {
+        ...((_a = mdc == null ? void 0 : mdc.components) == null ? void 0 : _a.prose) && props.prose !== false ? proseComponentMap2 : {},
+        ...((_b = mdc == null ? void 0 : mdc.components) == null ? void 0 : _b.map) || {},
+        ...toRaw(((_c = propsDataMDC.value) == null ? void 0 : _c.components) || {}),
+        ...props.components
+      };
+    });
+    const componentsMap = computed(() => {
+      return body.value ? resolveContentComponents2(body.value, { tags: tags.value }) : {};
+    });
+    const asyncLocalComponents = /* @__PURE__ */ new Map();
+    const asyncWrappedComponents = /* @__PURE__ */ new WeakMap();
+    function resolveVueComponent(component) {
+      let _component = component;
+      if (typeof component === "string") {
+        if (html_tags_list_default.has(component)) return component;
+        const pascalName = pascalCase(component);
+        if (globalComponents.includes(pascalName)) _component = resolveComponent(component, false);
+        else if (localComponents.includes(pascalName)) {
+          let asyncComponent = asyncLocalComponents.get(pascalName);
+          if (!asyncComponent) {
+            const loader = localComponentLoaders[pascalName];
+            asyncComponent = loader ? defineAsyncComponent(loader) : void 0;
+            if (asyncComponent) asyncLocalComponents.set(pascalName, asyncComponent);
+          }
+          _component = asyncComponent;
+        }
+        if (typeof _component === "string") return _component;
+      }
+      if (!_component) return _component;
+      const componentObject = _component;
+      if ("__asyncLoader" in componentObject) return componentObject;
+      if ("setup" in componentObject) {
+        let asyncComponent = asyncWrappedComponents.get(componentObject);
+        if (!asyncComponent) {
+          asyncComponent = defineAsyncComponent(() => Promise.resolve(componentObject));
+          asyncWrappedComponents.set(componentObject, asyncComponent);
+        }
+        return asyncComponent;
+      }
+      return componentObject;
+    }
+    function resolveContentComponents2(body2, meta) {
+      if (!body2) return;
+      const components = Array.from(new Set(loadComponents(body2, meta)));
+      const result = {};
+      for (const [tag, component] of components) {
+        if (result[tag]) continue;
+        if (typeof component === "object" && renderFunctions.some((fn) => Object.hasOwnProperty.call(component, fn))) {
+          result[tag] = component;
+          continue;
+        }
+        result[tag] = resolveVueComponent(component);
+      }
+      return result;
+    }
+    function loadComponents(node, documentMeta) {
+      const tag = node.tag;
+      if (node.type === "text" || tag === "binding" || node.type === "comment") return [];
+      const renderTag = findMappedTag2(node, documentMeta.tags);
+      const components2 = [];
+      if (node.type !== "root" && !html_tags_list_default.has(renderTag)) components2.push([tag, renderTag]);
+      for (const child of node.children || []) components2.push(...loadComponents(child, documentMeta));
+      return components2;
+    }
+    function findMappedTag2(node, tags2) {
+      var _a;
+      const tag = node.tag;
+      if (!tag || typeof ((_a = node.props) == null ? void 0 : _a.__ignoreMap) !== "undefined") return tag;
+      return tags2[tag] || tags2[pascalCase(tag)] || tags2[kebabCase(node.tag)] || tag;
+    }
+    return (_ctx, _push, _parent, _attrs) => {
+      if (!isEmpty.value) _push(ssrRenderComponent(MDCRenderer_default, mergeProps({
+        body: body.value,
+        data: data.value,
+        class: props.class,
+        tag: props.tag,
+        prose: props.prose,
+        unwrap: props.unwrap,
+        components: componentsMap.value,
+        "data-content-id": unref(debug) ? __props.value.id : void 0
+      }, _attrs), null, _parent));
+      else ssrRenderSlot(_ctx.$slots, "empty", {
+        body: body.value,
+        data: data.value,
+        dataContentId: unref(debug) ? __props.value.id : void 0
+      }, null, _push, _parent);
+    };
+  }
+};
+var _sfc_setup$1 = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/@nuxt/content/dist/runtime/components/ContentRenderer.vue");
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+};
+var ____slug__vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
+  __name: "[...slug]",
+  __ssrInlineRender: true,
+  async setup(__props) {
+    let __temp, __restore;
+    const route = useRoute$1();
+    const { data: page } = ([__temp, __restore] = withAsyncContext(() => useAsyncData("page-" + route.path, () => {
+      return queryCollection("content").path(route.path).first();
+    }, "$eTqqpKENFh")), __temp = await __temp, __restore(), __temp);
+    if (!page.value) throw createError$1({
+      statusCode: 404,
+      statusMessage: "Page not found",
+      fatal: true
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ContentRenderer = _sfc_main;
+      if (unref(page)) _push(ssrRenderComponent(_component_ContentRenderer, mergeProps({ value: unref(page) }, _attrs), null, _parent));
+      else _push(`<!---->`);
+    };
+  }
+});
+var _sfc_setup = ____slug__vue_vue_type_script_setup_true_lang_default.setup;
+____slug__vue_vue_type_script_setup_true_lang_default.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/[...slug].vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+var ____slug__default = ____slug__vue_vue_type_script_setup_true_lang_default;
+
+export { ____slug__default as default };
+//# sourceMappingURL=_...slug_-CEnvPqRQ.mjs.map

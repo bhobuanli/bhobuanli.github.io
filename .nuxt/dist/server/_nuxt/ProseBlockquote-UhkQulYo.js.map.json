@@ -1,0 +1,1 @@
+{"file":"ProseBlockquote-UhkQulYo.js","mappings":"","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue"],"sourcesContent":["<template>\n  <blockquote>\n    <slot />\n  </blockquote>\n</template>\n"],"version":3}

@@ -1,0 +1,1 @@
+import{F as e,b as t,bt as n,m as r,z as i}from"./D_ZdAcpI.js";import{t as a}from"#entry";var o=Object.assign(a(t({__name:`Alert`,props:{color:{type:String,default:`orange`}},setup(t){return(a,o)=>(e(),r(`div`,{class:`alert`,style:n({"border-color":t.color})},[i(a.$slots,`default`,{},void 0,!0)],4))}}),[[`__scopeId`,`data-v-46dbbe98`]]),{__name:`Alert`});export{o as default};

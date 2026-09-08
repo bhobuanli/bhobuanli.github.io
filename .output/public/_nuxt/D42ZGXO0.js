@@ -1,0 +1,1 @@
+import{F as e,d as t,m as n}from"./0bTu7xe2.js";import{t as r}from"#entry";var i={},a={class:`page-intro`};function o(r,i){return e(),n(`section`,a,[...i[0]||=[t(`p`,{class:`eyebrow`},`ABOUT`,-1),t(`h1`,null,`关于我`,-1),t(`p`,{class:`lead`},`这是一个记录学习、创作与日常观察的个人空间。`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};

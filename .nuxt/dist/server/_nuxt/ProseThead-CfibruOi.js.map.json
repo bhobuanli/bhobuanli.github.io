@@ -1,0 +1,1 @@
+{"file":"ProseThead-CfibruOi.js","mappings":"","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseThead.vue"],"sourcesContent":["<template>\n  <thead>\n    <slot />\n  </thead>\n</template>\n"],"version":3}

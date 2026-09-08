@@ -1,0 +1,1 @@
+{"file":"ProseCode-BYiav7Hk.js","mappings":"","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseCode.vue"],"sourcesContent":["<template>\n  <code><slot /></code>\n</template>\n"],"version":3}

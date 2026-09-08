@@ -1,0 +1,40 @@
+import { defineComponent, useSSRContext } from "vue";
+import { ssrInterpolate, ssrRenderAttr, ssrRenderList } from "vue/server-renderer";
+//#region app/pages/artworks.vue?vue&type=script&setup=true&lang.ts
+var artworks_vue_vue_type_script_setup_true_lang_default = /*@__PURE__*/ defineComponent({
+	__name: "artworks",
+	__ssrInlineRender: true,
+	setup(__props) {
+		const artworks = [{
+			title: "角色练习 001",
+			date: "2026-09-08",
+			image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=900&q=80",
+			source: "https://www.pixiv.net/"
+		}, {
+			title: "光影速写",
+			date: "2026-08-21",
+			image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80",
+			source: "https://x.com/"
+		}];
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(`<!--[--><section class="page-intro"><p class="eyebrow">SKETCHBOOK</p><h1>画作练习</h1><p class="lead">把过程留下来，慢慢看见自己的变化。</p></section><div class="art-grid"><!--[-->`);
+			ssrRenderList(artworks, (art) => {
+				_push(`<a${ssrRenderAttr("href", art.source)} target="_blank" rel="noreferrer" class="art-card"><img${ssrRenderAttr("src", art.image)}${ssrRenderAttr("alt", art.title)} loading="lazy"><div><span>${ssrInterpolate(art.date)}</span><h2>${ssrInterpolate(art.title)}</h2></div></a>`);
+			});
+			_push(`<!--]--></div><!--]-->`);
+		};
+	}
+});
+//#endregion
+//#region app/pages/artworks.vue
+var _sfc_setup = artworks_vue_vue_type_script_setup_true_lang_default.setup;
+artworks_vue_vue_type_script_setup_true_lang_default.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/artworks.vue");
+	return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+var artworks_default = artworks_vue_vue_type_script_setup_true_lang_default;
+//#endregion
+export { artworks_default as default };
+
+//# sourceMappingURL=artworks-iKiMzGQ_.js.map

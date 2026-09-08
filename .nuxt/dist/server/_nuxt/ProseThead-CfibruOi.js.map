@@ -1,0 +1,1 @@
+{"version":3,"file":"ProseThead-CfibruOi.js","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseThead.vue"],"sourcesContent":["<template>\n  <thead>\n    <slot />\n  </thead>\n</template>\n"],"x_google_ignoreList":[0],"mappings":""}
