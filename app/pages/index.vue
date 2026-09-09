@@ -1,7 +1,31 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-
 const portrait = ref(false)
+const blogList = ref<HTMLElement | null>(null)
+let revealObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  const targets = blogList.value?.querySelectorAll<HTMLElement>('.blog-reveal') ?? []
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((target) => target.classList.add("is-visible"))
+    return
+  }
+
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return
+
+      entry.target.classList.add("is-visible")
+      revealObserver?.unobserve(entry.target)
+    })
+  }, { threshold: 0.35 })
+
+  targets.forEach((target) => revealObserver?.observe(target))
+})
+
+onBeforeUnmount(() => {
+  revealObserver?.disconnect()
+})
 const blogs = [
   { title: '从零开始的个人博客', date: 'MAY 2026' },
   { title: '关于持续创作这件事', date: 'APR 2026' },
@@ -12,23 +36,23 @@ const blogs = [
 </script>
 <template>
   <section class="intro-card">
-    <div class="intro-content"><p class="intro-copy">欢迎来到我的部落格，我叫陈小春，是兄弟，就来砍我。欢迎来到我的部落格，我叫陈小春，是兄弟，就来砍我欢迎来到我的部落格，我叫陈小春，是兄弟，就来砍我欢迎来到我的部落格，我叫陈小春，是兄弟，就来砍我欢迎来到我的部落格，我叫陈小春，是兄弟，就来砍我。</p><div class="social-links"><a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="Twitter / X"><img src="/icons/twitter.svg" alt="Twitter / X"></a><a href="https://www.pixiv.net/" target="_blank" rel="noreferrer" aria-label="Pixiv"><img src="/icons/pixiv.svg" alt="Pixiv"></a><a href="https://weibo.com/" target="_blank" rel="noreferrer" aria-label="微博"><img src="/icons/weibo.svg" alt="微博"></a></div></div>
+    <div class="intro-content"><p class="intro-copy">一个色魔，一个喜欢大胸大屁股的俗人。</p><div class="social-links"><a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="Twitter / X"><img src="/icons/twitter.svg" alt="Twitter / X"></a><a href="https://www.pixiv.net/" target="_blank" rel="noreferrer" aria-label="Pixiv"><img src="/icons/pixiv.svg" alt="Pixiv"></a><a href="https://weibo.com/" target="_blank" rel="noreferrer" aria-label="微博"><img src="/icons/weibo.svg" alt="微博"></a></div></div>
     <button class="portrait-switch" type="button"  @click="portrait = !portrait">
       <img :src="portrait ? '/images/portrait-02.png' : '/images/portrait-01.png'" alt="zy" />
     </button>
   </section>
   <section class="section blogs-section">
     <h2 class="blogs-heading">BLOGS</h2>
-    <div class="blog-list">
+    <div ref="blogList" class="blog-list">
       <div v-for="(blog, index) in blogs" :key="blog.title" class="blog-reveal">
         <NuxtLink to="/posts" class="blog-row">
           <span class="blog-text-reveal">
             <span class="blog-row-content">{{ blog.title }}</span>
-            <motion.span class="blog-reveal-block" :initial="{ x: '0%' }" :while-in-view="{ x: '110%', opacity: 0 }" :viewport="{ once: true, amount: 0.35 }" :transition="{ duration: 0.72, delay: index * 0.08, ease: [0.65, 0.05, 0, 1] }" aria-hidden="true" />
+            <span class="blog-reveal-block" :style="{ '--reveal-delay': index * 0.08 + 's' }" aria-hidden="true" />
           </span>
           <span class="blog-text-reveal blog-date-reveal">
             <time class="blog-row-content">{{ blog.date }}</time>
-            <motion.span class="blog-reveal-block" :initial="{ x: '0%' }" :while-in-view="{ x: '110%', opacity: 0 }" :viewport="{ once: true, amount: 0.35 }" :transition="{ duration: 0.72, delay: index * 0.08 + 0.08, ease: [0.65, 0.05, 0, 1] }" aria-hidden="true" />
+            <span class="blog-reveal-block" :style="{ '--reveal-delay': index * 0.08 + 0.08 + 's' }" aria-hidden="true" />
           </span>
         </NuxtLink>
       </div>

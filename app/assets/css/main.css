@@ -27,8 +27,6 @@ main { min-height: 78vh; }
   grid-template-areas: "content portrait";
   align-items: center;
   gap: clamp(32px, 6vw, 72px);
-  margin-top: 42px;
-  padding: 24px 0;
 }
 .intro-content { grid-area: content; min-width: 0; }
 .intro-copy { margin: 0; font-size: 1rem; line-height: 1.6; }
@@ -52,7 +50,32 @@ main { min-height: 78vh; }
 .blog-reveal { overflow: hidden; }
 .blog-text-reveal { position: relative; display: inline-block; overflow: hidden; line-height: 1.3; }
 .blog-row-content { position: relative; z-index: 1; user-select: none; -webkit-user-select: none; }
-.blog-reveal-block { position: absolute; inset: -2px; z-index: 2; background: #474747; transform: translateX(0); pointer-events: none; }
+.blog-reveal-block {
+  position: absolute;
+  inset: 0 auto 0 -4px;
+  width: calc(100% + 8px);
+  z-index: 2;
+  background: #474747;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+.blog-reveal.is-visible .blog-reveal-block {
+  animation: blog-text-reveal 0.72s cubic-bezier(.65, .05, 0, 1) var(--reveal-delay) forwards;
+}
+@keyframes blog-text-reveal {
+  0% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  99.9% {
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(calc(100% + 8px), 0, 0);
+    visibility: hidden;
+  }
+}
 .blog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid #999; text-decoration: none; font-size: .95rem; }
 .blog-row time { white-space: nowrap; font-size: .85rem; }
 .portrait-switch:focus-visible,
@@ -70,15 +93,13 @@ footer { padding: 24px 0; }
 @media (max-width: 650px) {
   .site-shell { width: 100%; padding-inline: 28px; }
   .site-header { padding: 22px 0; }
-  .brand { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+  .brand { font-size: clamp(2rem, 9vw, 2.6rem); }
   .intro-card {
     grid-template-columns: 1fr;
     grid-template-areas:
       "portrait"
       "content";
     gap: 28px;
-    margin-top: 24px;
-    padding: 32px 0;
   }
   .portrait-switch { justify-self: center; width: min(300px, 100%); }
   .intro-content { text-align: left; }
