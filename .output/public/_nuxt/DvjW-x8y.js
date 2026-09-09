@@ -1,1 +1,0 @@
-import{F as e,d as t,m as n}from"./0bTu7xe2.js";import{t as r}from"#entry";var i={},a={class:`page-intro`};function o(r,i){return e(),n(`section`,a,[...i[0]||=[t(`h1`,null,`博客`,-1),t(`p`,null,`博客内容正在整理中。`,-1)]])}var s=r(i,[[`render`,o]]);export{s as default};

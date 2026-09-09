@@ -1,1 +1,0 @@
-{"file":"ProseTbody-DYFoy_Ov.js","mappings":"","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseTbody.vue"],"sourcesContent":["<template>\n  <tbody>\n    <slot />\n  </tbody>\n</template>\n"],"version":3}

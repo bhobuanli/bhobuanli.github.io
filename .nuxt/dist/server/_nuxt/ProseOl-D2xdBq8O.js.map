@@ -1,1 +1,0 @@
-{"version":3,"file":"ProseOl-D2xdBq8O.js","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseOl.vue"],"sourcesContent":["<template>\n  <ol>\n    <slot />\n  </ol>\n</template>\n"],"x_google_ignoreList":[0],"mappings":""}

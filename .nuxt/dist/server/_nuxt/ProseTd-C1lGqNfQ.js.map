@@ -1,1 +1,0 @@
-{"version":3,"file":"ProseTd-C1lGqNfQ.js","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseTd.vue"],"sourcesContent":["<template>\n  <td>\n    <slot />\n  </td>\n</template>\n"],"x_google_ignoreList":[0],"mappings":""}

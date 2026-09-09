@@ -1,1 +1,0 @@
-{"version":3,"file":"ProseLi-C5NqAxv7.js","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseLi.vue"],"sourcesContent":["<template>\n  <li><slot /></li>\n</template>\n"],"x_google_ignoreList":[0],"mappings":""}

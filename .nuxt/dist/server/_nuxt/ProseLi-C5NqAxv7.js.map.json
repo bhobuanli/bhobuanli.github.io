@@ -1,1 +1,0 @@
-{"file":"ProseLi-C5NqAxv7.js","mappings":"","names":[],"sources":["../../../../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseLi.vue"],"sourcesContent":["<template>\n  <li><slot /></li>\n</template>\n"],"version":3}
