@@ -67,9 +67,11 @@ const formatDate = (date?: string) => {
               <span class="blog-row-content">{{ blog.title }}</span>
               <span class="blog-reveal-block" :style="{ '--reveal-delay': index * 0.08 + 's' }" aria-hidden="true" />
             </span>
+            <span class="blog-date-line">
             <span class="blog-text-reveal blog-date-reveal">
               <time class="blog-row-content">{{ formatDate(String(blog.meta?.date || '')) }}</time>
               <span class="blog-reveal-block" :style="{ '--reveal-delay': index * 0.08 + 0.08 + 's' }" aria-hidden="true" />
+            </span>
             </span>
           </NuxtLink>
         </div>

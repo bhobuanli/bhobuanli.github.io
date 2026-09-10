@@ -1,13 +1,22 @@
 <script setup lang="ts">
 const route = useRoute()
 const articleRef = ref<HTMLElement | null>(null)
+
+// GitHub Pages 会重定向到带尾斜杠的地址，而预渲染抓取的是无尾斜杠路径，
+// 需要统一路径，否则 payload 键匹配不上会导致刷新后内容为空。
+const contentPath = computed(() => {
+  const path = route.path.replace(/\/+$/, '')
+
+  return path.length ? path : '/'
+})
+
 let revealObserver: IntersectionObserver | null = null
 let revealTimer = 0
 let bodyTimer = 0
 let bodyWatcher: MutationObserver | null = null
 
-const { data: page } = await useAsyncData('page-' + route.path, () => {
-  return queryCollection('content').path(route.path).first()
+const { data: page } = await useAsyncData('page-' + contentPath.value, () => {
+  return queryCollection('content').path(contentPath.value).first()
 })
 
 if (!page.value) {
