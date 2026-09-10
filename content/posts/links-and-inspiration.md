@@ -1,0 +1,21 @@
+---
+title: 最近收藏的灵感
+description: 一些让我停下来多看几秒的作品与网站。
+date: 2026-06-03
+tags:
+  - 灵感
+  - 书签
+---
+
+## 三个关键词
+
+**留白**、**秩序**、**触感**。
+
+我喜欢那些信息清楚，却仍然保留呼吸感的页面。它们不会急着把所有内容一次性说完。
+
+### 延伸阅读
+
+- [Indieground](https://indieground.net/blog)
+- [Nuxt Content](https://content.nuxt.com/)
+- [GitHub Pages](https://pages.github.com/)
+
