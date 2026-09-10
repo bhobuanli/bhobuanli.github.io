@@ -86,26 +86,34 @@ main { min-height: 78vh; }
   }
 }
 
-/* 文章内容色块揭幕 */
-.article-reveal-ready .article-reveal-block { position: relative; clip-path: inset(0); }
-.article-reveal-ready .article-reveal-text { display: inline-block; padding: .08em 0; margin: -.08em 0; }
-.article-reveal-ready blockquote.article-reveal-block { width: fit-content; max-width: 100%; }
-.article-reveal-ready .article-reveal-block::after {
-  content: "";
+/* 文章文字揭幕：按行生成遮罩块，盖在内容之上 */
+.article-reveal-host { position: relative; }
+.article-line-block {
   position: absolute;
-  inset: 0 auto 0 -4px;
-  width: calc(100% + 8px);
   z-index: 2;
-  background: #474747;
+  display: block;
   pointer-events: none;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
+  overflow: hidden;
 }
-.article-reveal-ready .article-reveal-block.is-visible::after {
-  animation: blog-text-reveal 0.72s cubic-bezier(.65, .05, 0, 1) var(--reveal-delay, 0s) forwards;
+.article-line-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: calc(100% + 4px);
+  background: #474747;
+}
+.article-reveal-host.is-visible .article-line-block::before {
+  animation: article-line-reveal 0.72s cubic-bezier(.65, .05, 0, 1) calc(var(--reveal-delay, 0s) + var(--line-index, 0) * 0.05s) forwards;
+}
+@keyframes article-line-reveal {
+  /* 移动实际绘制区域，越过裁切边界；不缩放色块或动画化 clip-path。 */
+  from { left: -2px; }
+  to { left: calc(100% + 2px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .article-reveal-ready .article-reveal-block::after { display: none; }
+  .article-line-block { display: none; }
 }
 .blog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid #999; text-decoration: none; font-size: .95rem; }
 .blog-row { transition: background-color .2s ease, padding-inline .2s ease; }

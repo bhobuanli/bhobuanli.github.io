@@ -76,7 +76,5 @@ const viewExit = computed(() => ({
   width: 100%;
   min-width: 0;
   background: #fcfcfc;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 </style>
