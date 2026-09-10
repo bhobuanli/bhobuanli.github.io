@@ -37,7 +37,7 @@ const articleDate = computed(() => {
 })
 
 const HEADING_SELECTOR = 'h1, h2, h3, h4'
-const BLOCK_SELECTOR = 'ul, ol, blockquote'
+const BLOCK_SELECTOR = 'blockquote'
 
 // 把内容包进内联容器，遮罩宽度跟文字一致，而不是整行宽度
 const wrapTextContent = (element: HTMLElement) => {
@@ -77,13 +77,22 @@ const collectTargets = (article: HTMLElement) => {
     targets.push(wrapTextContent(paragraph))
   })
 
-  article.querySelectorAll<HTMLElement>(BLOCK_SELECTOR).forEach((block) => {
-    if (block.closest('pre, table, header')) return
+  // 列表按每一条单独揭幕：只包文字内容，序号与圆点不参与遮罩
+  article.querySelectorAll<HTMLElement>('li').forEach((item) => {
+    if (item.closest('pre, table')) return
 
-    // 内部段落已单独揭幕，列表标记保持可见
-    if (block.querySelector('p')) return
+    // 含块级子元素时交给内部元素处理，避免嵌套遮罩
+    if (item.querySelector('ul, ol, p, div, pre, blockquote')) return
 
-    targets.push(block)
+    targets.push(wrapTextContent(item))
+  })
+
+  // 引用块内部没有段落时，直接对引用块文字揭幕
+  article.querySelectorAll<HTMLElement>('blockquote').forEach((quote) => {
+    if (quote.closest('pre, table')) return
+    if (quote.querySelector('p, li')) return
+
+    targets.push(wrapTextContent(quote))
   })
 
   return targets.sort((a, b) =>

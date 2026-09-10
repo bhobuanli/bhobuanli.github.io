@@ -37,7 +37,7 @@ main { min-height: 78vh; }
 .social-links { display: flex; align-items: center; gap: 16px; margin-top: 22px; }
 .social-links a { display: inline-flex; width: 35px; height: 35px; align-items: center; justify-content: center; margin: 0 5px; }
 .social-links a { transition: transform .2s ease, opacity .2s ease; }
-.social-links a:hover { transform: translateY(-3px) scale(1.08); opacity: .72; }
+
 .social-links img { display: block; width: 100%; height: 100%; object-fit: contain; filter: grayscale(1) brightness(0) saturate(100%) invert(28%) sepia(4%) saturate(1100%) hue-rotate(82deg) brightness(94%) contrast(88%); }
 .portrait-switch { grid-area: portrait; justify-self: end; width: auto; height: 300px; padding: 0; border: 0; background: transparent; cursor: pointer; }
 .portrait-switch img { display: block; width: auto; height: 300px; max-width: none; object-fit: contain; object-position: center bottom; }
@@ -87,10 +87,8 @@ main { min-height: 78vh; }
 }
 
 /* 文章内容色块揭幕 */
-.article-reveal-ready .article-reveal-block { position: relative; overflow: hidden; }
+.article-reveal-ready .article-reveal-block { position: relative; clip-path: inset(0); }
 .article-reveal-ready .article-reveal-text { display: inline-block; padding: .08em 0; margin: -.08em 0; }
-.article-reveal-ready ul.article-reveal-block,
-.article-reveal-ready ol.article-reveal-block,
 .article-reveal-ready blockquote.article-reveal-block { width: fit-content; max-width: 100%; }
 .article-reveal-ready .article-reveal-block::after {
   content: "";
@@ -111,7 +109,7 @@ main { min-height: 78vh; }
 }
 .blog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid #999; text-decoration: none; font-size: .95rem; }
 .blog-row { transition: background-color .2s ease, padding-inline .2s ease; }
-.blog-row:hover { background-color: color-mix(in srgb, #474747 8%, transparent); padding-inline: 10px; }
+
 .blog-row time { display: block; white-space: nowrap; font-size: .85rem; }
 .blog-date-line { display: flex; margin-left: auto; }
 .portrait-switch:focus-visible,
@@ -148,6 +146,16 @@ main { min-height: 78vh; }
 .art-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 20px 0 70px; }
 .art-card img { width: 100%; display: block; border: 2px solid #474747; box-shadow: 8px 8px 0 #474747; }
 footer { padding: 24px 0; }
+
+/* 仅在支持真实指针的设备上启用 hover，避免移动端点击后样式卡住 */
+@media (hover: hover) and (pointer: fine) {
+  .social-links a:hover { transform: translateY(-3px) scale(1.08); opacity: .72; }
+  .blog-row:hover { background-color: color-mix(in srgb, #474747 8%, transparent); padding-inline: 10px; }
+}
+
+/* 触摸端点击时播放一次反馈，随后自动复原 */
+.social-links a.is-tapped { transform: translateY(-3px) scale(1.08); opacity: .72; }
+.blog-row.is-tapped { background-color: color-mix(in srgb, #474747 8%, transparent); padding-inline: 10px; }
 @media (max-width: 650px) {
   .site-shell { width: 100%; padding-inline: 28px; }
   /* .site-header { padding: 22px 0; } */
