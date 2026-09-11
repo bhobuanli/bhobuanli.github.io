@@ -1,0 +1,48 @@
+{
+  "1374492662061953034": {
+    "id": "1374492662061953034",
+    "url": "https://x.com/swyx/status/1374492662061953034",
+    "author": {
+      "name": "swyx",
+      "handle": "swyx",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/2073162797354217472/hNny55eF_normal.jpg"
+    },
+    "text": "wewww. 2020 was a VERY good year for #nextjs. https://t.co/l48ZbKgCOK\n\nthings have changed so. much. since i first got involved with React not too long ago.",
+    "createdAt": "2021-03-23T22:46:02.000Z",
+    "links": [
+      {
+        "url": "https://t.co/l48ZbKgCOK",
+        "expandedUrl": "https://www.npmtrends.com/gatsby-vs-next-vs-nuxt-vs-create-react-app-vs-vuepress",
+        "displayUrl": "npmtrends.com/gatsby-vs-next…"
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://pbs.twimg.com/media/ExMtnH7VkAUO51f.jpg",
+        "width": 1323,
+        "height": 717,
+        "alt": ""
+      }
+    ]
+  },
+  "1834916805024137323": {
+    "id": "1834916805024137323",
+    "url": "https://x.com/bhobuanli/status/1834916805024137323",
+    "author": {
+      "name": "见真无半厘",
+      "handle": "bhobuanli",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/1792134847831629824/vIpyPw4r_normal.jpg"
+    },
+    "text": "",
+    "createdAt": "2024-09-14T11:27:12.000Z",
+    "links": [],
+    "photos": [
+      {
+        "url": "https://pbs.twimg.com/media/GXbvGbEagAAC013.jpg",
+        "width": 1158,
+        "height": 1637,
+        "alt": ""
+      }
+    ]
+  }
+}

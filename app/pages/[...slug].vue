@@ -58,7 +58,7 @@ const collectTargets = (article: HTMLElement) => {
   if (date) targets.push(date)
 
   article.querySelectorAll<HTMLElement>('p').forEach((paragraph) => {
-    if (paragraph.closest('pre, table, header')) return
+    if (paragraph.closest('pre, table, header, [data-reveal-skip]')) return
 
     // 图片段落没有可测的文本行，跳过
     if (paragraph.querySelector('img')) return
@@ -67,7 +67,7 @@ const collectTargets = (article: HTMLElement) => {
   })
 
   article.querySelectorAll<HTMLElement>('li').forEach((item) => {
-    if (item.closest('pre, table')) return
+    if (item.closest('pre, table, [data-reveal-skip]')) return
 
     // 含块级子元素的条目交给内部元素处理，避免嵌套遮罩
     if (item.querySelector('ul, ol, p, div, pre, blockquote')) return
@@ -76,7 +76,7 @@ const collectTargets = (article: HTMLElement) => {
   })
 
   article.querySelectorAll<HTMLElement>('blockquote').forEach((quote) => {
-    if (quote.closest('pre, table')) return
+    if (quote.closest('pre, table, [data-reveal-skip]')) return
     if (quote.querySelector('p, li')) return
 
     targets.push(quote)

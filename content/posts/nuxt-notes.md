@@ -9,6 +9,11 @@ tags:
 
 ## 数据从哪里来
 
+::x-post{url="https://x.com/swyx/status/1374492662061953034"}
+::
+::x-post{url="https://x.com/bhobuanli/status/1834916805024137323"}
+::
+
 文章放在 `content/posts`，Nuxt Content 会把 Markdown 转成可查询的数据。
 
 ```ts

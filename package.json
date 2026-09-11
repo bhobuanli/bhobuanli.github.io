@@ -6,7 +6,8 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "sync:x": "node scripts/sync-x-posts.mjs"
   },
   "dependencies": {
     "@nuxt/content": "^3.16.0",
