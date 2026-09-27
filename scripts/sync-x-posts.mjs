@@ -6,7 +6,7 @@ import { promisify } from 'node:util'
 const root = process.cwd()
 const runCommand = promisify(execFile)
 const destination = resolve(root, 'data/x-posts.json')
-const postPattern = /::x-post\{[^}]*url=["']([^"']+)["'][^}]*\}\s*::/g
+const postPattern = /::x-post\{[^}]*url=["'](https?:\/\/[^"']+)["'][^}]*\}/g
 const features = [
   'tfw_timeline_list:',
   'tfw_follower_count_sunset:true',
@@ -94,11 +94,90 @@ const toSnapshot = (tweet) => ({
     height: photo.height,
     alt: photo.alt_text || '',
   })),
+  video: pickVideo(tweet),
 })
+
+const parseResolution = (url) => {
+  const match = url?.match(/\/(\d+)x(\d+)\//)
+  return match
+    ? {
+        width: Number(match[1]),
+        height: Number(match[2]),
+        area: Number(match[1]) * Number(match[2]),
+      }
+    : null
+}
+
+const pickVideo = (tweet) => {
+  const mediaDetails = Array.isArray(tweet.mediaDetails)
+    ? tweet.mediaDetails
+    : tweet.mediaDetails
+      ? [tweet.mediaDetails]
+      : []
+  const detail = mediaDetails.find(item => item?.type === 'video' || item?.type === 'animated_gif')
+  const video = tweet.video
+
+  if (!detail && !video) return null
+
+  const variants = detail?.video_info?.variants
+    || (video?.variants || []).map(variant => ({
+      content_type: variant.type,
+      url: variant.src,
+    }))
+  const mp4s = variants.filter(variant => variant.content_type === 'video/mp4' && variant.url)
+  const best = [...mp4s].sort((a, b) => {
+    const bitrateDelta = (b.bitrate || 0) - (a.bitrate || 0)
+    if (bitrateDelta) return bitrateDelta
+    return (parseResolution(b.url)?.area || 0) - (parseResolution(a.url)?.area || 0)
+  })[0]
+
+  if (!best) return null
+
+  const resolution = parseResolution(best.url)
+  const width = detail?.original_info?.width
+    || video?.aspectRatio?.[0]
+    || resolution?.width
+    || 16
+  const height = detail?.original_info?.height
+    || video?.aspectRatio?.[1]
+    || resolution?.height
+    || 9
+
+  return {
+    url: best.url,
+    contentType: best.content_type || 'video/mp4',
+    poster: video?.poster || detail?.media_url_https || null,
+    width,
+    height,
+    type: detail?.type === 'animated_gif' ? 'gif' : 'video',
+    durationMs: detail?.video_info?.duration_millis ?? video?.durationMs ?? null,
+  }
+}
+
+const fixUnclosedXPosts = async (file, source) => {
+  const lines = source.split(/\r?\n/)
+  let changed = false
+
+  for (let index = 0; index < lines.length; index += 1) {
+    if (!/^::x-post\{[^}]+\}$/.test(lines[index].trim())) continue
+    const nextContent = lines.slice(index + 1).find(line => line.trim() !== '')
+    if (nextContent?.trim() === '::') continue
+    lines.splice(index + 1, 0, '::')
+    changed = true
+    index += 1
+  }
+
+  if (!changed) return source
+
+  const fixed = lines.join('\n')
+  await writeFile(resolve(root, file), fixed, 'utf8')
+  console.log(`Fixed missing "::" in ${file}`)
+  return fixed
+}
 
 const urls = new Set()
 for await (const file of glob('content/**/*.md', { cwd: root })) {
-  const source = await readFile(resolve(root, file), 'utf8')
+  const source = await fixUnclosedXPosts(file, await readFile(resolve(root, file), 'utf8'))
   for (const match of source.matchAll(postPattern)) urls.add(match[1])
 }
 

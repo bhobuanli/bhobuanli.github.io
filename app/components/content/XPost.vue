@@ -3,6 +3,15 @@ import snapshots from '~~/data/x-posts.json'
 
 type Link = { url: string, expandedUrl: string, displayUrl?: string }
 type Photo = { url: string, width: number, height: number, alt?: string }
+type Video = {
+  url: string
+  contentType: string
+  poster: string | null
+  width: number
+  height: number
+  type: 'video' | 'gif'
+  durationMs: number | null
+}
 type Snapshot = {
   id: string
   url: string
@@ -11,24 +20,11 @@ type Snapshot = {
   createdAt: string
   links: Link[]
   photos: Photo[]
+  video?: Video | null
 }
 
 const props = defineProps<{ url: string }>()
-const footerTapped = ref(false)
-let footerTapTimer: ReturnType<typeof setTimeout> | undefined
-
-const tapFooter = () => {
-  footerTapped.value = true
-  if (footerTapTimer) clearTimeout(footerTapTimer)
-  footerTapTimer = setTimeout(() => {
-    footerTapped.value = false
-    footerTapTimer = undefined
-  }, 420)
-}
-
-onBeforeUnmount(() => {
-  if (footerTapTimer) clearTimeout(footerTapTimer)
-})
+const tapFeedback = useTapFeedback()
 const postId = computed(() => props.url.match(/status\/(\d+)/)?.[1] ?? '')
 const post = computed(() => (snapshots as Record<string, Snapshot>)[postId.value])
 
@@ -89,7 +85,25 @@ const textParagraphs = computed(() => {
       </p>
     </div>
 
-    <div v-if="post.photos.length" class="x-post-media" :class="{ 'is-multiple': post.photos.length > 1 }">
+    <div
+      v-if="post.video"
+      class="x-post-video"
+      :style="{ aspectRatio: `${post.video.width} / ${post.video.height}` }"
+    >
+      <video
+        :controls="post.video.type !== 'gif'"
+        playsinline
+        preload="metadata"
+        :poster="post.video.poster || undefined"
+        :loop="post.video.type === 'gif'"
+        :muted="post.video.type === 'gif'"
+        :autoplay="post.video.type === 'gif'"
+      >
+        <source :src="post.video.url" :type="post.video.contentType">
+      </video>
+    </div>
+
+    <div v-else-if="post.photos.length" class="x-post-media" :class="{ 'is-multiple': post.photos.length > 1 }">
       <a v-for="photo in post.photos" :key="photo.url" :href="post.url" target="_blank" rel="noopener noreferrer" :style="{ aspectRatio: `${photo.width} / ${photo.height}` }">
         <img
           :src="photo.url"
@@ -104,10 +118,9 @@ const textParagraphs = computed(() => {
     <footer class="x-post-footer">
       <a
         :href="post.url"
-        :class="{ 'is-tapped': footerTapped }"
         target="_blank"
         rel="noopener noreferrer"
-        @click="tapFooter"
+        @click="tapFeedback"
       >VIEW ON X</a>
     </footer>
   </section>

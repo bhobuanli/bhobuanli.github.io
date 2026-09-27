@@ -1,53 +1,13 @@
 <script setup lang="ts">
 const portrait = ref(false)
-const { data: posts } = await useAsyncData('home-posts', async () => {
-  const articles = await queryCollection('content').all()
-
-  return articles
-    .sort((a, b) => new Date(String(b.meta?.date || 0)).getTime() - new Date(String(a.meta?.date || 0)).getTime())
-})
+const { data: posts } = await usePosts('home-posts')
 const revealScope = ref<HTMLElement | null>(null)
-let revealObserver: IntersectionObserver | null = null
+const tapFeedback = useTapFeedback()
 
-onMounted(() => {
-  const targets = revealScope.value?.querySelectorAll<HTMLElement>('.reveal-target') ?? []
+useScrollReveal(revealScope, { threshold: 0.35 })
 
-  if (!("IntersectionObserver" in window)) {
-    targets.forEach((target) => target.classList.add("is-visible"))
-    return
-  }
-
-  revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return
-
-      entry.target.classList.add("is-visible")
-      revealObserver?.unobserve(entry.target)
-    })
-  }, { threshold: 0.35 })
-
-  targets.forEach((target) => revealObserver?.observe(target))
-})
-
-onBeforeUnmount(() => {
-  revealObserver?.disconnect()
-})
-const tapFeedback = (event: Event) => {
-  const el = event.currentTarget as HTMLElement | null
-
-  if (!el) return
-
-  el.classList.add('is-tapped')
-  window.setTimeout(() => el.classList.remove('is-tapped'), 420)
-}
-
-const formatDate = (date?: string) => {
-  if (!date) return ''
-
-  const parsedDate = new Date(date)
-  return Number.isNaN(parsedDate.getTime())
-    ? ''
-    : parsedDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).toUpperCase()
+const formatDate = (post: { meta?: { date?: unknown }, date?: unknown }) => {
+  return formatPostDate(getPostDateValue(post))
 }
 </script>
 <template>
@@ -55,16 +15,16 @@ const formatDate = (date?: string) => {
     <section class="intro-card">
       <div class="intro-content">
         <div class="intro-text-reveal reveal-target">
-          <p class="intro-copy">一个色魔，一个喜欢大胸大屁股的俗人。</p><span class="blog-reveal-block" aria-hidden="true" />
+          <p class="intro-copy">由腼腆的天使和喜欢熟女的魔鬼组成，通常在上面发一些业余画作。</p><span class="blog-reveal-block" aria-hidden="true" />
         </div>
         <div class="social-links"><a href="https://x.com/bhobuanli" target="_blank" rel="noreferrer"
-            aria-label="Twitter / X" @click="tapFeedback"><img src="/icons/twitter.svg" alt="Twitter / X"></a><a
+            aria-label="Twitter / X" @click="tapFeedback"><img src="/icons/twitter.svg" alt="Twitter / X" draggable="false"></a><a
             href="https://www.pixiv.net/users/14344706" target="_blank" rel="noreferrer" aria-label="Pixiv" @click="tapFeedback"><img
-              src="/icons/pixiv.svg" alt="Pixiv"></a><a href="https://weibo.com/u/6037536393" target="_blank"
-            rel="noreferrer" aria-label="微博" @click="tapFeedback"><img src="/icons/weibo.svg" alt="微博"></a></div>
+              src="/icons/pixiv.svg" alt="Pixiv" draggable="false"></a><a href="https://weibo.com/u/6037536393" target="_blank"
+            rel="noreferrer" aria-label="微博" @click="tapFeedback"><img src="/icons/weibo.svg" alt="微博" draggable="false"></a></div>
       </div>
       <button class="portrait-switch" type="button" @click="portrait = !portrait">
-        <img :src="portrait ? '/images/portrait-02.png' : '/images/portrait-01.png'" alt="zy" />
+        <img :src="portrait ? '/images/portrait-02.png' : '/images/portrait-01.png'" alt="zy" draggable="false" />
       </button>
     </section>
     <section class="section blogs-section">
@@ -78,12 +38,13 @@ const formatDate = (date?: string) => {
             </span>
             <span class="blog-date-line">
             <span class="blog-text-reveal blog-date-reveal">
-              <time class="blog-row-content">{{ formatDate(String(blog.meta?.date || '')) }}</time>
+              <time class="blog-row-content">{{ formatDate(blog) }}</time>
               <span class="blog-reveal-block" :style="{ '--reveal-delay': index * 0.08 + 0.08 + 's' }" aria-hidden="true" />
             </span>
             </span>
           </NuxtLink>
         </div>
+        <p v-if="!posts?.length" class="empty-list">还没有文章。</p>
       </div>
     </section>
   </div>

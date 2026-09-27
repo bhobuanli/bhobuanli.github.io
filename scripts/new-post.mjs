@@ -31,11 +31,8 @@ try {
   } else {
     const slug = slugify(await ask('文件名 slug（可留空）', fallbackSlug)) || fallbackSlug
     const description = await ask('文章简介')
-    const tags = (await ask('标签（用英文逗号分隔）'))
-      .split(',')
-      .map(tag => tag.trim())
-      .filter(Boolean)
     const file = resolve(postsDir, `${slug}.md`)
+    const imagesDir = resolve(root, 'public/images/posts', slug)
 
     try {
       await access(file)
@@ -47,17 +44,21 @@ try {
         `title: ${JSON.stringify(title)}`,
         `description: ${JSON.stringify(description)}`,
         `date: ${date}`,
-        tags.length ? 'tags:' : 'tags: []',
-        ...tags.map(tag => `  - ${JSON.stringify(tag)}`),
         '---',
+        '',
+        `<!-- 图片放在 public/images/posts/${slug}/，正文使用：![图片描述](/images/posts/${slug}/cover.webp) -->`,
+        '<!-- 本地图片的宽高会在构建时自动写入页面，避免加载时跳动。 -->',
         '',
         '<!-- 在这里开始写正文 -->',
         '',
       ].join('\n')
 
       await mkdir(postsDir, { recursive: true })
+      await mkdir(imagesDir, { recursive: true })
       await writeFile(file, frontmatter, 'utf8')
       console.log(`\n已创建：${file}`)
+      console.log(`图片目录：public/images/posts/${slug}/`)
+      console.log(`Markdown 示例（构建时自动读取图片宽高）：![图片描述](/images/posts/${slug}/cover.webp)`)
     }
   }
 } finally {
