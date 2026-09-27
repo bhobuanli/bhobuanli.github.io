@@ -15,7 +15,7 @@ const formatDate = (post: { meta?: { date?: unknown }, date?: unknown }) => {
     <section class="intro-card">
       <div class="intro-content">
         <div class="intro-text-reveal reveal-target">
-          <p class="intro-copy">由腼腆的天使和喜欢熟女的魔鬼组成，通常在上面发一些业余画作。</p><span class="blog-reveal-block" aria-hidden="true" />
+          <p class="intro-copy">由腼腆的天使和喜欢熟女的魔鬼组成，社交媒体通常发一些充满个人癖好的绘画。</p><span class="blog-reveal-block" aria-hidden="true" />
         </div>
         <div class="social-links"><a href="https://x.com/bhobuanli" target="_blank" rel="noreferrer"
             aria-label="Twitter / X" @click="tapFeedback"><img src="/icons/twitter.svg" alt="Twitter / X" draggable="false"></a><a

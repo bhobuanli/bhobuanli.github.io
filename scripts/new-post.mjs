@@ -30,7 +30,6 @@ try {
     process.exitCode = 1
   } else {
     const slug = slugify(await ask('文件名 slug（可留空）', fallbackSlug)) || fallbackSlug
-    const description = await ask('文章简介')
     const file = resolve(postsDir, `${slug}.md`)
     const imagesDir = resolve(root, 'public/images/posts', slug)
 
@@ -42,12 +41,12 @@ try {
       const frontmatter = [
         '---',
         `title: ${JSON.stringify(title)}`,
-        `description: ${JSON.stringify(description)}`,
         `date: ${date}`,
         '---',
         '',
         `<!-- 图片放在 public/images/posts/${slug}/，正文使用：![图片描述](/images/posts/${slug}/cover.webp) -->`,
         '<!-- 本地图片的宽高会在构建时自动写入页面，避免加载时跳动。 -->',
+        '<!-- X 推文引用示例：::x-post{url="https://x.com/用户名/status/推文ID"}:: -->',
         '',
         '<!-- 在这里开始写正文 -->',
         '',
