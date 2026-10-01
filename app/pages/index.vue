@@ -15,7 +15,7 @@ const formatDate = (post: { meta?: { date?: unknown }, date?: unknown }) => {
     <section class="intro-card">
       <div class="intro-content">
         <div class="intro-text-reveal reveal-target">
-          <p class="intro-copy">由腼腆的天使和喜欢熟女的魔鬼组成，社交媒体通常发一些充满个人癖好的绘画。</p><span class="blog-reveal-block" aria-hidden="true" />
+          <p class="intro-copy">不擅长数字，不爱动脑，喜欢熟女，社交平台通常发一些充满个人癖好的画。</p><span class="blog-reveal-block" aria-hidden="true" />
         </div>
         <div class="social-links"><a href="https://x.com/bhobuanli" target="_blank" rel="noreferrer"
             aria-label="Twitter / X" @click="tapFeedback"><img src="/icons/twitter.svg" alt="Twitter / X" draggable="false"></a><a
@@ -44,7 +44,7 @@ const formatDate = (post: { meta?: { date?: unknown }, date?: unknown }) => {
             </span>
           </NuxtLink>
         </div>
-        <p v-if="!posts?.length" class="empty-list">还没有文章。</p>
+        <p v-if="!posts?.length" class="empty-list">跑路了</p>
       </div>
     </section>
   </div>

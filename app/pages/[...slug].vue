@@ -24,7 +24,7 @@ const articleDescription = computed(() => {
   const description = page.value?.description
   return typeof description === 'string' && description.trim()
     ? description
-    : 'BHOBUANLI 的个人博客，记录学习、创作与日常观察。'
+    : ''
 })
 
 useHead(() => ({
@@ -32,7 +32,7 @@ useHead(() => ({
   meta: [
     { name: 'description', content: articleDescription.value },
     { property: 'og:title', content: articleTitle.value },
-    { property: 'og:description', content: articleDescription.value },
+    // { property: 'og:description', content: articleDescription.value },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: `https://bhobuanli.github.io${route.path}` },
   ],
